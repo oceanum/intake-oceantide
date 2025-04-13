@@ -16,5 +16,5 @@ sources:
         - testing
     driver: oceantide
     args:
-      urlpath: /source/intake-hydro/tests/oceantide.zarr
+      urlpath: "file://{{CATALOG_DIR}}/oceantide.zarr"
       file_format: oceantide
