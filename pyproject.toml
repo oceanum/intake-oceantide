@@ -55,6 +55,7 @@ package-dir = {"" = "src"}
 
 [project.entry-points."intake.drivers"]
 "oceantide" = "intake_oceantide.source:OceantideSource"
+"oceantide_accessor" = "intake_oceantide.source:OceantideSource" # Backward compatibility
 
 # Mypy
 # ----
