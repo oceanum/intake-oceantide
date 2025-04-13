@@ -7,7 +7,7 @@ import pytest
 
 from click.testing import CliRunner
 
-from intake_hydro import cli
+from intake_oceantide import cli
 
 
 @pytest.fixture

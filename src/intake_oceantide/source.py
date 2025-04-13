@@ -1,15 +1,12 @@
-"""Total currents and elevations plugin."""
-import pandas as pd
 import xarray as xr
-from fsspec import get_mapper
-from intake_xarray.base import DataSourceMixin
+from intake.source.base import DataSource
 
 import oceantide
 
-from intake_hydro import __version__
+from intake_oceantide import __version__
 
 
-class OceantideAccessorSource(DataSourceMixin):
+class OceantideSource(DataSource):
     """Opens tide constituents dataset with oceantide accessor.
 
     Args:
@@ -19,7 +16,7 @@ class OceantideAccessorSource(DataSourceMixin):
         kwargs: Further parameters are passed to the oceantide reader.
 
     """
-    name = "oceantide_accessor"
+    name = "oceantide"
     container = "xarray"
     version = __version__
     partition_access = True
@@ -40,6 +37,12 @@ class OceantideAccessorSource(DataSourceMixin):
             reader = getattr(oceantide, f"read_{self.file_format}")
         self._ds = reader(self.urlpath, **self.kwargs)
 
-    def _open_dataset(self):
+    def to_dask(self):
         self._open_tide_cons()
+        return self._ds
 
+    read = to_dask
+
+    discover = read
+
+    read_chunked = to_dask

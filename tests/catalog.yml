@@ -3,57 +3,10 @@ metadata:
 
 sources:
 
-  test_multiscale:
-    # driver: intake_oceanum.MultiScaleSource
-    driver: onmultiscale
-    description: "Test data for the multiscale driver"
+  oceantide_testing:
+    description: Oceantide testing dataset
     metadata:
-      name: New zealand tide cons pyramid
-      yname: lat
-      xname: lon
-      tags:
-        - tide
-        - constituents
-        - multiscale
-    args:
-      urlpath: "{{CATALOG_DIR}}/tidecons-pyramid.zarr"
-      landmask: landmask
-      storage_options:
-        token: null
-
-  total_currents_testing:
-    description: Total currents testing dataset
-    metadata:
-      name: total_currents_testing
-      tname: time
-      yname: latitude
-      xname: longitude
-      uname: uo
-      vname: vo
-      ename: ssh
-      url: "https://oceanum.science"
-      tags:
-        - ocean
-        - currents
-        - tide
-        - testing
-    driver: composed_ocean
-    args:
-      urlpath: /source/intake-hydro/tests/currents.zarr
-      storage_options:
-        token: null
-      consolidated: True
-      tide:
-        filename: /source/intake-hydro/tests/oceantide-real-imag-vars.nc
-        file_format: oceantide
-      resample:
-        time: H
-      interpolate_na: True
-
-  oceantide_accessor_testing:
-    description: Oceantide accessor testing dataset
-    metadata:
-      name: oceantide_accessor_testing
+      name: oceantide_testing
       url: "https://oceanum.science"
       tags:
         - tide
@@ -61,7 +14,7 @@ sources:
         - constituents
         - accessor
         - testing
-    driver: oceantide_accessor
+    driver: oceantide
     args:
       urlpath: /source/intake-hydro/tests/oceantide.zarr
       file_format: oceantide

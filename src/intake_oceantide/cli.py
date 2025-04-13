@@ -1,6 +1,4 @@
 """Console script for intake_oceantide."""
-import intake_oceantide
-
 import typer
 from rich.console import Console
 

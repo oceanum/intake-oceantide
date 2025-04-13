@@ -18,7 +18,7 @@ classifiers = [
 license = {text = "MIT license"}
 dependencies = [
   "fsspec",
-  "intake-xarray",
+  "intake",
   "numpy",
   "oceantide",
   "pandas",
@@ -30,13 +30,15 @@ dynamic = ["version"]
 
 [project.optional-dependencies]
 dev = [
-    "coverage",  # testing
-    "mypy",  # linting
-    "pytest",  # testing
-    "ruff",  # linting
-    "sphinx",  # documentation
-    "tox",  # testing
-    "twine",  # publishing
+    "coverage",
+    "ipdb",
+    "ipython",
+    "mypy",
+    "pytest",
+    "ruff",
+    "sphinx",
+    "tox",
+    "twine",
 ]
 
 [project.urls]
@@ -51,8 +53,8 @@ package-dir = {"" = "src"}
 [tool.setuptools.package-data]
 "*" = ["*.*"]
 
-
-
+[project.entry-points."intake.drivers"]
+"oceantide" = "intake_oceantide.source:OceantideSource"
 
 # Mypy
 # ----
