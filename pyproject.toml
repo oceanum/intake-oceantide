@@ -57,6 +57,9 @@ package-dir = {"" = "src"}
 "oceantide" = "intake_oceantide.source:OceantideSource"
 "oceantide_accessor" = "intake_oceantide.source:OceantideSource" # Backward compatibility
 
+[tool.setuptools.dynamic]
+version = {attr = "intake_oceantide.__version__"}
+
 # Mypy
 # ----
 
